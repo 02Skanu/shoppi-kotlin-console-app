@@ -2,9 +2,10 @@ package screen
 
 import extensions.getNotEmptyString
 
-class ShoppingCategory {
+class ShoppingCategory : Screen() {
 
     fun showCategories() {
+        ScreenStack.push(this)
         val categories = arrayOf("패션", "전자기기", "반려동물용품")
         for (category in categories) {
             println(category)
@@ -17,11 +18,9 @@ class ShoppingCategory {
             shoppingCart.showCartItems()
         } else {
             if (categories.contains(selectedCategory)){
-                // TODO 2. 카테고리 상품 목록 보여주기
                 val shoppingProductList = ShoppingProductList()
                 shoppingProductList.showProducts(selectedCategory)
             } else {
-                // TODO 3. 카테고리 목록에 없는 값을 입력하는 경리
                 showErrorMessage(selectedCategory)
             }
         }
